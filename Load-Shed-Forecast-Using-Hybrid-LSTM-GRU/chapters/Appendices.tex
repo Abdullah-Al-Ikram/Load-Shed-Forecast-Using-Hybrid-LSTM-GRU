@@ -1,27 +1,66 @@
 \chapter*{Appendices}
 \markboth{Appendices}{}
 \addcontentsline{toc}{chapter}{Appendices}
+This appendix includes supplementary materials that support the main content of the report. It provides additional details, data, and resources that are relevant for a comprehensive understanding of the project.
 
-Add sections as needed.
-% reset and change section numbering to use letters
+
 \setcounter{section}{0}
 \renewcommand{\thesection}{\Alph{section}}
 
 \section{Source Code / GitHub Link}
-Include repository links or sample code snippets necessary for replication.
+\begin{itemize}
+    \item Project Repository: https://github.com/Abdullah-Al-Ikram/Load-Shed-Forecast-Using-Hybrid-LSTM-GRU
+\end{itemize}
 
-% \section{User Manual / Interface Screenshots}
-% Provide instructions for users and screenshots of the system interface.
-
-% \section{Dataset Summary}
-% Describe datasets used, including key attributes and statistics.
+This repository contains the complete source code for the load shedding forecasting project, including data preprocessing scripts, model training code, and evaluation metrics.
 
 \section{Team Responsibilities}
-Summarize team member contributions.
+\begin{itemize}
+    \item Md. Abdullah Al Ikram:
+    \begin{itemize}
+        \item Data Collection and Preprocessing
+        \item Model Development and Training
+        \item Performance Evaluation and Analysis
+        \item Algorithm Design and Implementation
+        \item Hyperparameter Tuning and Optimization
+        \item Result Visualization and Presentation
+        \item Documentation and Report Writing
+    \end{itemize}
+    \item Tonoya Akhter Adhora:
+    \begin{itemize}
+        \item Literature Review and Background Research
+        \item Documentation and Report Writing
+    \end{itemize}
+
+    \item Abdul Rizvan Alvi:
+    \begin{itemize}
+        \item Planning and Budget Estimation
+        \item Analyze Standards and Design Constraints
+    \end{itemize}
+\end{itemize}
 
 \section{Ethics and Compliance Statements}
-Include any declarations about data ethics, consent, or compliance.
+\begin{itemize}
+    \item Data Privacy: All data used in this project were obtained from publicly available sources or with proper authorization. No personally identifiable information (PII) was used or disclosed.
+    \item Ethical Use of AI: The development and deployment of the Hybrid LSTM-GRU model were conducted in accordance with ethical guidelines for AI, ensuring fairness, transparency, and accountability.
+    \item Compliance with Institutional Policies: The project adhered to the University of Asia Pacific's policies on research ethics and integrity.
+    \item Environmental Considerations: Efforts were made to minimize the environmental impact of computational resources used during model training and evaluation.
+\end{itemize}
 
 \section{Evidences of CEP}
-
+The project involved several Complex Engineering Problem (CEP) outlines how the project meets the criteria for addressing a Complex Engineering Problem (CEP) as defined by the accreditation standards. The following points summarize the evidences provided in the report:
+\begin{itemize}
+    \item Complex Engineering Problem (CEP) Addressed: The project addresses the complex engineering problem of accurately forecasting load shedding events in power grids, which involves handling large datasets, capturing non-linear temporal dependencies, and integrating multiple data sources.
+    \item Methodological Framework: The use of a Hybrid LSTM-GRU model demonstrates the application of advanced deep learning techniques to solve a real-world engineering problem.
+    \item Performance Metrics: The project includes comprehensive evaluation metrics (accuracy, precision, recall, F1-score, MAE, RMSE) to assess the effectiveness of the proposed solution.
+    \item Comparative Analysis: A detailed comparison with baseline models (Pure GRU and Pure LSTM) highlights the advantages of the Hybrid approach in addressing the CEP.
+\end{itemize}
 \section{Evidences of CEA}
+The project involved several Complex Engineering Activities (CEA) as outlined in Chapter \ref{cha:AccreditationComponents}. The following points summarize the key activities undertaken:
+\begin{itemize}
+    \item Data Collection and Preprocessing: Gathering and preparing historical load shedding data, weather data, and electricity demand data for model training.
+    \item Model Development: Designing and implementing the Hybrid LSTM-GRU architecture for load shedding forecasting.
+    \item Hyperparameter Tuning: Systematically optimizing model parameters to enhance performance.
+    \item Performance Evaluation: Conducting rigorous testing and validation of the model using various metrics.
+    \item Result Analysis: Interpreting the results and comparing them with existing approaches to demonstrate the effectiveness of the proposed solution.
+\end{itemize}
