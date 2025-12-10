@@ -1,0 +1,153 @@
+This chapter provides a comprehensive overview of the methodology adopted for the development and implementation of the system, focusing on the entire lifecycle of the project from data acquisition and preprocessing to model development and evaluation. It includes details on the tools and technologies used, the system architecture, and the processes followed to ensure robust performance and accuracy.
+\section{Methodological Framework}
+This section explains the methodology used to develop and implement the hybrid LSTM-GRU model for predicting electricity load shedding events and demand. The primary goal was to predict the occurrence and magnitude of electricity load shedding based on historical power generation and demand data, as well as other relevant factors like temperature. Data for the model was sourced from the Power Grid Company of Bangladesh (PGCB). The dataset spans from July 2024 to July 2025 and contains features such as electricity demand, generation, and weather conditions. The dataset was used for both classification (load shedding event occurrence) and regression (load shedding amount).
+
+The system was designed to preprocess raw data, train deep learning models (GRU and LSTM), and combine their predictions to generate forecasts of load shedding events and their intensity. Key steps included data cleaning, feature engineering, model selection, and performance evaluation. The GRU and LSTM models were trained on historical data, with both models designed to handle sequential time series data. The GRU layer captured short-term dependencies, while LSTM handled long-term dependencies, making the hybrid model more robust. After model training, predictions were made on a test dataset, and various evaluation metrics, including success rate, MAE, and RMSE, were used to assess the performance of the models.
+
+\section{Tools, Libraries, and Technologies Used}
+This section outlines the various tools, libraries, and technologies employed in the development and implementation of the system. The choice of these tools was based on their suitability for handling time-series data, deep learning model development, and overall system integration. Key tools and technologies include:
+\begin{itemize}
+
+\item Programming Languages: Python was chosen for its flexibility, ease of use, and extensive ecosystem of libraries for data science and machine learning. Its readability and community support make it ideal for rapid prototyping and experimentation with complex models like LSTM and GRU. Python’s compatibility with multiple frameworks and tools ensures seamless integration across preprocessing, modeling, and visualization tasks.
+
+\item Frameworks (e.g., Django, Flask, Node.js, TensorFlow, PyTorch)
+\begin{itemize}
+    \item TensorFlow and Keras: These libraries were used for building and training deep learning models, particularly the hybrid LSTM-GRU architecture. TensorFlow provides a robust platform for numerical computation and machine learning, while Keras offers a high-level API for easy model construction and experimentation.
+    \item PyTorch: An alternative deep learning framework that was considered for its dynamic computation graph capabilities, which facilitate easier debugging and model experimentation.
+    \item Pandas and NumPy: Essential for data manipulation and numerical operations, these libraries were used extensively for data preprocessing, cleaning, and feature engineering.
+    \item Scikit-learn: Utilized for various machine learning tasks, including data splitting, scaling, and evaluation metrics.
+    \item Matplotlib and Seaborn: These libraries were employed for data visualization, enabling the analysis of trends, patterns, and model performance through graphs and plots.
+\end{itemize}
+\item Databases: The dataset was handled in CSV format using Pandas for simplicity and direct integration with Python’s ML libraries. This choice was suitable because the dataset was small to medium in size, structured, and did not require real-time querying or complex transactions.
+\item Hardware Platform: The development and training of the deep learning models were conducted on a high-performance computing environment equipped with GPUs (Graphics Processing Units). The use of GPUs significantly accelerated the training process, especially for deep learning models that require substantial computational power for matrix operations and backpropagation.
+\end{itemize}
+These features and labels are directly relevant for forecasting and allow the hybrid LSTM-GRU model to learn both the occurrence and magnitude of load shedding events effectively.
+    
+\section{Data Collection / Dataset Description}
+The dataset used for this project was obtained from the Power Grid Company of Bangladesh (PGCB) and Nasa Power Dev for weather data. It encompasses historical data on electricity demand, generation, and weather conditions from July 2024 to July 2025. The dataset includes the following key features:
+\begin{itemize}
+\item Electrical Data: Generation, Demand, Load Shed.
+\item Weather Data: Temperature, Humidity, Wind Speed.
+\item Temporal Data: Date, Time.
+\end{itemize}
+Missing values were addressed using forward fill and backward fill techniques. This ensures continuity in the time series without disrupting patterns. Outliers were detected using the Interquartile Range (IQR) method. Instead of removing outliers, the values were replaced with a moving average, which helped maintain data consistency. To improve model performance, all features were normalized using the Min-Max scaling technique. This ensures that all features lie within the range [0, 1], making it easier for the model to converge during training.
+
+New features were created, such as lag features, rolling averages, and time-based features, to capture the temporal dependencies in the data.
+
+\section{Preprocessing Steps}
+The preprocessing steps involved several key activities to prepare the dataset for model training:
+\begin{itemize}
+\item Data Cleaning: Handling missing values and outliers to ensure data quality.
+\item Feature Engineering: Creating new features such as lag features, rolling averages, and time-based features to capture temporal dependencies.
+\item Data Normalization: Scaling features to a uniform range using Min-Max scaling.
+\item Data Segmentation: Dividing the dataset into training and testing sets, ensuring temporal integrity.
+\end{itemize}
+
+\section{Model Architecture}
+The hybrid LSTM-GRU model architecture consists of the following layers:
+\begin{itemize}
+\item LSTM Layer: An LSTM layer with 128 units was used to capture long-term dependencies, especially the seasonal patterns and long-range correlations in the data.
+\item GRU Layer: A GRU layer with 128 units was used to capture short-term dependencies in the sequential data.
+\item Dropout and Batch Normalization: Dropout was applied to avoid overfitting, and batch normalization was used to improve convergence speed and generalization.
+\item Dense Layer: A fully connected Dense layer was used to output the final predictions. For the classification task, a sigmoid activation function was used in the output layer, while for the regression task, linear activation was used.
+\item Optimizer: The Adam optimizer was used to adjust the model’s weights, as it adapts the learning rate based on gradient data and is suitable for handling sparse gradients in deep learning.
+\end{itemize}
+
+\section{System Implementation}
+The following pseudo code outlines the key steps involved in the hybrid LSTM-GRU model for load shedding forecasting:
+\begin{algorithm}[H]
+\footnotesize
+\caption{Hybrid LSTM-GRU Load Shedding Forecasting}
+\label{alg:hybrid_lstm_gru}
+\begin{algorithmic}[1]
+\State \textbf{Input:} Dataset $D(x_1, \dots, x_N)$; define $X$, $y_{class}$, $y_{reg}$, $K$ segments, $S = \mathrm{int}(N/K)$
+\For{$k = 1$ to $K$}
+    \State Segment data: $D_k = D[(k-1) \times S : k \times S]$
+    \State Compute rolling means for sequence input: $X_{seq}$
+    \State Define and compile classification model (LSTM + GRU + Dense + Sigmoid)
+    \State Train classification model on $X_{seq}$ and $y_{class}$
+    \If{non-zero samples in $y_{class}$}    
+        \State Define and compile regression model (LSTM + GRU + Dense + Linear)
+        \State Train regression model on $X_{seq}$ and $y_{reg}$
+    \Else
+        \State Skip regression training
+    \EndIf
+\EndFor
+\State Predict classification: $y_{class\_pred}$
+\State Binarize predictions: $y_{class\_bin}$
+\State Predict regression: $y_{reg\_pred}$
+\State Rescale regression predictions if trained; else set to zero
+\State Compute final output: $y_{final} = y_{class\_bin} \times y_{reg\_rescaled}$
+\State Inverse transform final predictions: $y_{test\_rescaled}$
+\State Calculate success rate based on acceptable error margin
+\end{algorithmic}
+\end{algorithm}
+\subsection*{Implementation Steps}
+The implementation of the hybrid LSTM-GRU model involved the following steps:
+\begin{itemize}
+\item Data Loading: Importing the dataset from CSV files and loading it into a Pandas DataFrame.
+\item Preprocessing: Applying the preprocessing steps outlined earlier, including data cleaning, feature engineering, normalization, and segmentation.
+\item Model Definition: Constructing the hybrid LSTM-GRU model architecture using TensorFlow/Keras.
+\item Model Training: Training the classification and regression models on the training dataset, using appropriate loss functions and optimizers.
+\item Model Evaluation: Evaluating the model’s performance on the test dataset using metrics such as accuracy, MAE, and RMSE.
+\item Prediction: Generating predictions for load shedding events and their magnitudes.
+\end{itemize}
+\begin{table}[H]
+\tiny
+\centering
+\label{tab:system_hyperparameters_config}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.5\textwidth}|}
+\hline
+\rowcolor{gray!30}
+\textbf{Hyperparameter} & \textbf{Value} & \textbf{Description} \\
+\hline
+LSTM Units & 128 & Number of units in the LSTM layer, responsible for capturing short-term dependencies in the data.    \\
+\hline
+GRU Units & 128 & Number of units in the GRU layer, responsible for capturing long-term dependencies in the data.	\\
+\hline
+Dropout Rate & 0.4 (GRU, LSTM) & Dropout rate applied to the GRU and LSTM layers to prevent overfitting.	\\
+\hline
+Batch Normalization & Applied after LSTM layer & A technique to normalize activations to improve convergence speed and generalization.	\\
+\hline
+Activation Function (Dense) & LeakyReLU (negative slope = 0.1) & Activation function used in the Dense layer to introduce non-linearity.	\\
+\hline
+Optimizer & Adam (learning rate = 0.001) & Optimizer used to adjust the weights during training. \\
+\hline
+Loss Function (Classification)	& Binary Crossentropy & Loss function for the classification task (binary outcome).	\\
+\hline
+Loss Function (Regression)	& Huber Loss & Loss function for the regression task (continuous outcome). \\
+\hline
+Learning Rate & 0.001 & Learning rate  used by the optimizer.   \\
+\hline
+Epochs & 100 (for classification), 120 (for regression) & Number of training epochs. \\	
+\hline
+Batch Size & 32 & Number of samples processed before updating model weights \\
+\hline
+Time Steps & 24 & Number of time steps (or data points) used in each sequence for the model. \\
+\hline
+\end{tabular}
+\caption{System Hyperparameters Configuration}
+\end{table}
+\section{Hardware and Software Requirements}
+The system was developed and tested on a high-performance computing environment with the following hardware and software requirements:
+
+\begin{itemize}
+\item Hardware requirements:
+\begin{itemize}
+\item CPU: Multi-core processor (e.g., Intel i7 or AMD Ryzen 7)
+\item GPU: NVIDIA GPU with CUDA support (e.g., GTX 1080 Ti or higher)
+\item RAM: Minimum 16 GB
+\item Storage: SSD with at least 100 GB free space
+\item Internet Connection: Required for downloading libraries and datasets
+\end{itemize}
+\item Software requirements: 
+\begin{itemize}
+\item Operating System: Windows 10/11, Linux (Ubuntu 20.04 or later), or macOS
+\item Python Version: Python 3.8 or later
+\item Libraries: TensorFlow, Keras, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
+\item Development Environment: Jupyter Notebook, VS Code, or PyCharm
+\end{itemize}
+\end{itemize}
+\section{Summary}
+This chapter detailed the methodology and implementation of the hybrid LSTM-GRU model for electricity load shedding forecasting. It covered the entire process from data collection and preprocessing to model architecture and training. The tools, libraries, and technologies used were outlined, along with the hardware and software requirements necessary for development. The chapter also provided a pseudo code representation of the model's implementation steps, ensuring clarity in the approach taken. Overall, this chapter laid a solid foundation for understanding how the system was built and prepared for evaluation in subsequent chapters.

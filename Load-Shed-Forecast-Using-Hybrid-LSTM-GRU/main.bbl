@@ -1,0 +1,163 @@
+\begin{thebibliography}{10}
+
+\bibitem{abdulameer2025forecasting}
+Yahya~Hafedh Abdulameer and Abdullahi~Abdu Ibrahim.
+\newblock Forecasting of electrical energy consumption using hybrid models of
+  gru, cnn, lstm, and ml regressors.
+\newblock {\em J. Wirel. Mob. Netw}, 16:560--575, 2025.
+
+\bibitem{abumohsen2023electrical}
+Mobarak Abumohsen, Amani~Yousef Owda, and Majdi Owda.
+\newblock Electrical load forecasting using lstm, gru, and rnn algorithms.
+\newblock {\em Energies}, 16(5):2283, 2023.
+
+\bibitem{aguiar2023insight}
+Javier~Manuel Aguiar-P{\'e}rez and Mar{\'\i}a~{\'A}ngeles P{\'e}rez-Ju{\'a}rez.
+\newblock An insight of deep learning based demand forecasting in smart grids.
+\newblock {\em Sensors}, 23(3):1467, 2023.
+
+\bibitem{akhtaruzzaman2020hsic}
+Md~Akhtaruzzaman, Mohammad~Kamrul Hasan, S~Rayhan Kabir, Siti Norul Huda~Sheikh
+  Abdullah, Muhammad~Jafar Sadeq, and Eklas Hossain.
+\newblock Hsic bottleneck based distributed deep learning model for load
+  forecasting in smart grid with a comprehensive survey.
+\newblock {\em IEEE Access}, 8:222977--223008, 2020.
+
+\bibitem{akhter2024short}
+Kazi Fuad~Bin Akhter, Sadia Mobasshira, Saief~Nowaz Haque, Mahjub Alam~Khan
+  Hesham, and Tanvir Ahmed.
+\newblock Short-term electricity demand forecasting of dhaka city using cnn
+  with stacked bilstm.
+\newblock {\em arXiv preprint arXiv:2406.06651}, 2024.
+
+\bibitem{ali2024time}
+Salman Ali, Santiago Bogarra, Muhammad~Naveed Riaz, Pyae~Pyae Phyo, David
+  Flynn, and Ahmad Taha.
+\newblock From time-series to hybrid models: advancements in short-term load
+  forecasting embracing smart grid paradigm.
+\newblock {\em Applied Sciences}, 14(11):4442, 2024.
+
+\bibitem{asad2025load}
+Dewan~Mohammad Asad, Mahin Shahriar, and Abdul~Hasib Chowdhury.
+\newblock Load forecasting for dhaka city using rnn, lstm, and gru
+  architectures with meteorological and temporal data.
+\newblock In {\em 2025 International Conference on Electrical, Computer and
+  Communication Engineering (ECCE)}, pages 1--6. IEEE, 2025.
+
+\bibitem{baesmat2025hybrid}
+Kamran~Hassanpouri Baesmat, Emma~E Regentova, and Yahia Baghzouz.
+\newblock A hybrid machine learning--statistical based method for short-term
+  energy consumption prediction in residential buildings.
+\newblock {\em Energy and AI}, page 100552, 2025.
+
+\bibitem{bashir2022short}
+Tasarruf Bashir, Chen Haoyong, Muhammad~Faizan Tahir, and Zhu Liqiang.
+\newblock Short term electricity load forecasting using hybrid prophet-lstm
+  model optimized by bpnn.
+\newblock {\em Energy reports}, 8:1678--1686, 2022.
+
+\bibitem{baul2024data}
+Anik Baul, Gobinda~Chandra Sarker, Prokash Sikder, Utpal Mozumder, and Ahmed
+  Abdelgawad.
+\newblock Data-driven short-term load forecasting for multiple locations: An
+  integrated approach.
+\newblock {\em Big data and cognitive computing}, 8(2):12, 2024.
+
+\bibitem{fahim2024transformation}
+Khairul~Eahsun Fahim, Md~Rakibul Islam, Nahid~Ahmed Shihab, Maria~Rahman Olvi,
+  Khondaker~Labib Al~Jonayed, and Adri~Shankar Das.
+\newblock Transformation and future trends of smart grid using machine and deep
+  learning: a state-of-the-art review.
+\newblock {\em International Journal of Applied}, 13(3):583--593, 2024.
+
+\bibitem{guo2025power}
+Wangyong Guo, Shijin Liu, Liguo Weng, and Xingyu Liang.
+\newblock Power grid load forecasting using a cnn-lstm network based on a
+  multi-modal attention mechanism.
+\newblock {\em Applied Sciences (2076-3417)}, 15(5), 2025.
+
+\bibitem{han2025residual}
+Jiacai Han and Pan Zeng.
+\newblock Residual bilstm based hybrid model for short-term load forecasting in
+  buildings.
+\newblock {\em Journal of Building Engineering}, 99:111593, 2025.
+
+\bibitem{hasanat2024enhancing}
+Syed~Muhammad Hasanat, Kaleem Ullah, Hamza Yousaf, Khalid Munir, Samain Abid,
+  Syed Ahmad~Saleem Bokhari, Muhammad~Minam Aziz, Syed Fahad~Murtaza Naqvi, and
+  Zahid Ullah.
+\newblock Enhancing short-term load forecasting with a cnn-gru hybrid model: A
+  comparative analysis.
+\newblock {\em IEEE Access}, 2024.
+
+\bibitem{hua2024short}
+Qingbo Hua, Zengliang Fan, Wei Mu, Jiqiang Cui, Rongxin Xing, Huabo Liu, and
+  Junwei Gao.
+\newblock A short-term power load forecasting method using cnn-gru with an
+  attention mechanism.
+\newblock {\em Energies}, 18(1):106, 2024.
+
+\bibitem{jung2021attention}
+Seungmin Jung, Jihoon Moon, Sungwoo Park, and Eenjun Hwang.
+\newblock An attention-based multilayer gru model for multistep-ahead
+  short-term load forecasting.
+\newblock {\em Sensors}, 21(5):1639, 2021.
+
+\bibitem{kumari2022big}
+Sanju Kumari, Neeraj Kumar, and Prashant~Singh Rana.
+\newblock A big data approach for demand response management in smart grid
+  using the prophet model.
+\newblock {\em Electronics}, 11(14):2179, 2022.
+
+\bibitem{mounir2023short}
+Nada Mounir, Hamid Ouadi, and Ismael Jrhilifa.
+\newblock Short-term electric load forecasting using an emd-bi-lstm approach
+  for smart grid energy management system.
+\newblock {\em Energy and Buildings}, 288:113022, 2023.
+
+\bibitem{nabavi2024deep}
+Seyed~Azad Nabavi, Sahar Mohammadi, Naser~Hossein Motlagh, Sasu Tarkoma, and
+  Philipp Geyer.
+\newblock Deep learning modeling in electricity load forecasting: Improved
+  accuracy by combining dwt and lstm.
+\newblock {\em Energy Reports}, 12:2873--2900, 2024.
+
+\bibitem{pallonetto2022forecast}
+Fabiano Pallonetto, Changhong Jin, and Eleni Mangina.
+\newblock Forecast electricity demand in commercial building with machine
+  learning models to enable demand response programs.
+\newblock {\em Energy and AI}, 7:100121, 2022.
+
+\bibitem{sen2023differential}
+Anuvab Sen, Vedica Gupta, and Chi Tang.
+\newblock Differential evolution algorithm based hyperparameter selection of
+  gated recurrent unit for electrical load forecasting.
+\newblock {\em arXiv preprint arXiv:2309.13019}, 2023.
+
+\bibitem{sharifhosseini2024investigating}
+Seyed~Mohammad Sharifhosseini, Taher Niknam, Mohammad~Hossein Taabodi,
+  Habib~Asadi Aghajari, Ehsan Sheybani, Giti Javidi, and Motahareh Pourbehzadi.
+\newblock Investigating intelligent forecasting and optimization in electrical
+  power systems: A comprehensive review of techniques and applications.
+\newblock {\em Energies}, 17(21):5385, 2024.
+
+\bibitem{shawon2025hybrid}
+Sarowar~Morshed Shawon, Shah~Nawaz Haider, Arnab Barua, Steve Austin,
+  Ifaz~Ahmed Adan, Mohammad~Shahadat Hossain, and HT~Zubair.
+\newblock Hybrid cnn-lstm model for urban energy load forecasting with iga-xai
+  for smart grids: peak and off-peak variability insights.
+\newblock {\em Results in Engineering}, page 107245, 2025.
+
+\bibitem{veeramsetty2022short}
+Venkataramana Veeramsetty, K~Rajeshwar Reddy, M~Santhosh, Arjun Mohnot, and
+  Gaurav Singal.
+\newblock Short-term electric power load forecasting using random forest and
+  gated recurrent unit.
+\newblock {\em Electrical Engineering}, 104(1):307--329, 2022.
+
+\bibitem{wu2024power}
+Dalei Wu, Shuhua Liang, Changji Chen, Yupei Chen, Pishi Wang, and Zhiyuan Long.
+\newblock Power load forecasting based on lstm deep learning algorithm.
+\newblock {\em Tehni{\v{c}}ki vjesnik}, 31(6):2156--2160, 2024.
+
+\end{thebibliography}

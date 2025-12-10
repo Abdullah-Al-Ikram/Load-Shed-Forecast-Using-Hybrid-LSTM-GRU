@@ -1,0 +1,75 @@
+This chapter provides the theoretical foundation for the research by exploring key concepts and reviewing existing literature related to short-term electricity demand forecasting and load shedding prediction. It begins with an introduction to fundamental theories and terminologies, such as time-series forecasting, Convolutional Neural Networks (CNN), and Long Short-Term Memory (LSTM) networks, which are essential for understanding the project. The chapter then surveys previous research and existing systems, categorizing studies by the techniques used, including classical machine learning models, deep learning approaches, and hybrid models. A comparative analysis highlights the strengths and weaknesses of these methods, emphasizing the limitations in accurately predicting both the occurrence and magnitude of load shedding. The chapter concludes by identifying research gaps, particularly the need for a unified forecasting model that addresses both classification and regression tasks simultaneously, which motivates the proposed solution of a hybrid GRU-LSTM model.
+\section{Preliminaries}
+To understand the forecasting model proposed in this study, it is essential to comprehend some key concepts and methodologies used in short-term electricity demand forecasting. This section introduces the core terminologies, models, and frameworks that underpin the project.
+
+In the context of electricity load forecasting, time-series data refers to a sequence of data points indexed in time order. Electricity demand is often observed at regular intervals, such as hourly or daily, and its prediction is crucial for grid management. Time-series forecasting involves using historical data to predict future values by identifying patterns and dependencies.
+
+CNNs are deep learning models that are particularly effective in capturing spatial features in data. Although they are traditionally used in image processing, CNNs have been successfully applied to time-series data by treating temporal patterns as spatial features [1]. CNNs are capable of identifying local patterns and trends in electricity demand, such as spikes in usage during specific hours or weather patterns.
+
+LSTM is a type of Recurrent Neural Network (RNN) designed to handle long-term dependencies in sequential data. It is highly effective for time-series forecasting, where past data points significantly influence future outcomes. LSTM networks excel at capturing both short-term and long-term dependencies, which is crucial in predicting electricity demand that fluctuates over time [2].
+
+Similar to LSTM, GRU is another variant of RNN. It is computationally more efficient than LSTM due to its simpler architecture. GRUs are particularly useful for tasks requiring the capture of short-term dependencies and are often used in combination with LSTM for hybrid models to leverage both short-term and long-term memory capabilities [3].
+
+Hybrid models combine different types of neural networks or machine learning algorithms to enhance forecasting accuracy. In this study, a combination of CNN with stacked Bi-LSTM is used to capture both spatial and temporal dependencies in the electricity demand data [1]. The integration of multiple models helps mitigate the individual weaknesses of each model, providing a more robust solution for forecasting.
+
+\section{Related Works / Existing Systems}
+Several studies have explored various methods for short-term electricity demand forecasting, utilizing different machine learning and deep learning techniques. These studies can be broadly classified into those using classical machine learning models, deep learning models, and hybrid models.
+
+Traditional methods for electricity demand forecasting include regression models, support vector machines (SVM), and decision trees. These models typically struggle to capture the complex, non-linear relationships in time-series data. However, they are often simpler to implement and computationally less expensive. Studies such as those by [4] have shown the limitations of classical models in handling high-dimensional data from smart grids, especially when the demand fluctuates due to weather conditions or seasonal factors
+    
+Recent studies have increasingly adopted deep learning techniques, especially LSTM and GRU networks, for time-series forecasting due to their ability to capture long-term temporal dependencies. For example, the study by [5] used LSTM networks to predict electricity demand, achieving a low Mean Absolute Percentage Error (MAPE) of 0.78%. LSTM networks have been found to outperform traditional methods by modeling the sequential nature of the data more effectively [6]. Similarly, [7] used a hybrid CNN-LSTM model for short-term load forecasting, demonstrating superior performance compared to traditional models with MAPE values ranging from 0.52% to 0.67%.
+    
+Combining CNN with RNN architectures, such as LSTM and GRU, has shown promising results in forecasting electricity demand. For example, [10] introduced a hybrid CNN-GRU model for short-term load forecasting, achieving improved accuracy in comparison to standalone CNN or GRU models. The CNN module captures the local features and trends, while the GRU model handles the sequential dependencies, thus providing a more comprehensive forecasting solution. This hybrid approach has been increasingly used to enhance predictive accuracy in complex systems like energy forecasting [8].
+
+The Prophet Model, developed by Facebook, has also been used for demand forecasting in smart grids [3]. It is based on an additive model where components such as trends, seasonality, and holidays are captured separately. While Prophet provides a simple and interpretable framework for time-series forecasting, it is often less accurate compared to deep learning models, particularly when dealing with more complex datasets.
+
+
+\section{Comparative Analysis of Related Works}
+The reviewed literature demonstrates a growing trend toward the use of deep learning models, particularly hybrid models, for electricity demand forecasting. However, the performance of these models varies significantly across different approaches. Standalone deep learning models, such as LSTM and GRU, excel in capturing long-term dependencies in time-series data but may struggle to effectively model short-term trends. This limitation is evident in studies like [5] and [6], where standalone models showed suboptimal performance for certain forecasting tasks.
+
+On the other hand, hybrid models, which combine different deep learning techniques, are better equipped to address this issue. By integrating models such as CNN and GRU, hybrid architectures can capture both short-term fluctuations and long-term dependencies, improving overall forecasting accuracy. For example, the CNN-GRU hybrid model proposed by [10] significantly outperformed its individual components, showcasing the effectiveness of combining multiple architectures to enhance predictive power.
+
+In contrast, classical machine learning models like Support Vector Machines (SVM) and regression techniques generally exhibit lower accuracy when applied to complex time-series data, as they are not well-suited to handle the intricate patterns and dependencies inherent in such data. While these models are less computationally intensive, making them suitable for simpler datasets or scenarios where computational resources are constrained, they are often outperformed by more advanced deep learning models in terms of forecasting precision and robustness.
+
+
+\section{Research Gap / Limitations of Existing Methods}
+Although many studies have successfully applied machine learning and deep learning models for load forecasting, several gaps remain. One major limitation is the difficulty of modeling both the occurrence and magnitude of load shedding in a single system. Existing research has largely focused on predicting electricity demand or load shedding independently, without considering both tasks simultaneously. Moreover, while many models show promising results, their performance can degrade when applied to real-world, noisy, or incomplete data, as evidenced in the study by [6]. Additionally, scalability remains a challenge, particularly when incorporating larger datasets or real-time data from smart grids [7].
+
+\begin{table}[H]
+\tiny
+\centering
+\caption{Overview of Literature Reviewed Works}
+\label{tab:Overview_of_Literature}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{0.15\textwidth}|p{0.1\textwidth}|p{0.15\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+\rowcolor{gray!30}
+\textbf{Research} & \textbf{Year} & \textbf{Dataset} & \textbf{Modeling Technique} & \textbf{Limitation}\\
+\hline
+Kazi Fuad Bin Akhter, et al. [1] &	2024 &	Electricity demand from Dhaka &	CNN + Stacked Bi-LSTM	& Limited to specific time-series data, lacks real-time adaptability.\\
+\hline
+Anik Baul, et al. [2] &	2024 &	6 years of daily consumption data &	Hybrid CNN + Bi-LSTM	& High computational cost, lacks integration with real-time grid data.\\
+\hline
+Sanju Kumari, et al. [3] &	2022 &	Smart meter data &	Prophet Model	& Assumes consistent historical data, limited to seasonal patterns.\\
+\hline
+Khairul Eahsun Fahim, et al. [4] & 2024 & Smart Grid energy consumption data & Distributed Deep Learning (DDL) + HSIC & Scalability issues, complex model training for large datasets.\\
+\hline
+Seyed Mohammad Sharif Hosseini, et al. [5] & 2024 & Electricity grid data & LSTM, GRU & Performance drops with missing or noisy data.\\
+\hline
+Javier Manuel Aguiar-Pérez, et al. [6] & 2023 & Smart grid consumption data & Deep Learning-based Demand Forecasting & Limited focus on larger datasets, lacks multi-region forecasting.\\
+\hline
+Salman Ali, et al. [7] & 2024 & Publicly available datasets & CNN + GRU hybrid model & Inadequate for predicting long-term trends, computationally expensive.\\
+\hline
+Syed Muhammad Hasanat, et al. [10] & 2024 & AEP, ISONE datasets & CNN + GRU hybrid mode & Performs poorly with seasonal fluctuations, requires large data sets.\\
+\hline
+Venkataramana Veeramsetty, et al. [11] &	2021 & Load data from substation & GRU + Random Forest (RF) & Limited to specific grid substation, lacks flexibility in data types.\\
+\hline
+Fabiano Pallonetto, et al. [8] & 2021 & Commercial building data & CNN + GRU + Attention Mechanism & Not scalable for large regional grids, lacks real-time prediction.\\
+\hline
+\end{tabular}
+
+\end{table}
+
+
+\section{Summary}
+The literature review demonstrates that deep learning models, particularly hybrid approaches, have shown significant promise in electricity demand forecasting and load shedding prediction. However, gaps remain in simultaneously addressing both classification and regression tasks, as well as improving model scalability and robustness in the face of noisy real-world data. The proposed hybrid LSTM-GRU model aims to bridge these gaps, offering a more efficient and accurate solution for short-term load shedding forecasting. The next chapter will delve into the design and methodology of the proposed model, highlighting its advantages over existing systems

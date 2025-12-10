@@ -1,0 +1,52 @@
+This chapter provides a detailed analysis of the results obtained from the system’s performance evaluation and compares the proposed Hybrid LSTM-GRU model with other existing models. The primary focus is on assessing the accuracy, reliability, and overall effectiveness of the forecasting system using various performance metrics. Additionally, we compare the model’s results with those from simpler models such as Pure GRU and Pure LSTM. The findings are evaluated in terms of classification accuracy, regression accuracy, and their ability to handle real-time data, highlighting the strengths and areas for improvement in the proposed system.
+\section{Experimental Setup}
+We ran a lot of crucial tests to see how well the model worked and how well it could handle extra data. The two main techniques to see how close the regression model’s predictions were to the real thing were the Mean Absolute Error (MAE) and the Root Mean Squared Error (RMSE). They did a fantastic job of sorting things into groups. The exact equations for these measurements are:
+\begin{equation}
+    MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+\end{equation}
+\begin{equation}
+    RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}
+\end{equation}
+where \(y_i\) is the actual value, \(\hat{y}_i\) is the predicted value, and \(n\) is the number of observations.
+
+We also used the F1 Score and the Accuracy Score to see how well the classification model could guess when the load shedding would happen. We also looked at the Success Rate, which tells us how effectively the model can guess when a load shedding event will happen.
+
+\section{Performance Metrics}
+The performance of the Hybrid LSTM-GRU model was evaluated using the following metrics:
+\begin{itemize}
+    \item \textbf{Mean Absolute Error (MAE)}: Measures the average magnitude of errors in a set of predictions, without considering their direction.
+    \item \textbf{Root Mean Squared Error (RMSE)}: Provides a measure of the average magnitude of the errors, giving higher weight to larger errors.
+    \item \textbf{F1 Score}: The harmonic mean of precision and recall, providing a balance between the two for classification tasks.
+    \item \textbf{Accuracy Score}: The ratio of correctly predicted instances to the total instances.
+    \item \textbf{Success Rate}: The percentage of correctly predicted load shedding events.
+\end{itemize}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/ActualVsPredicted.png}
+    \caption{Actual vs. Predicted Load Shedding Magnitudes(300x Scale)}
+    \label{fig:actual_vs_predicted}
+\end{figure}
+The Mean Absolute Error (MAE) was 7.49 MW, while the Root Mean Squared Error (RMSE) was 28.95 MW. This suggests that the model’s guesses were usually correct as long as these constraints were in place. The model works well, but it could do a better job of showing how the data changes. The R² score of 0.6095 shows this. Graphs that compared the actual and projected load shedding values, especially for the first 300 data points, revealed that the model could accurately follow the pattern, even if there were only tiny changes over time. The Success Rate indicator showed that the model could guess how much load will be lost with a 10\% error margin for 91.08\% of the test samples. This is a terrific score for games that ask you to guess the load.
+\section{Result Analysis}
+
+
+The performance of the Hybrid LSTM-GRU model, Pure GRU model, and Pure LSTM model was evaluated in terms of their ability to predict load shedding events and forecast the magnitude of electricity load shedding. The results demonstrated that the Hybrid LSTM-GRU model outperformed both the Pure GRU and Pure LSTM models across all key metrics. Specifically, the Hybrid LSTM-GRU model achieved a success rate of 91.08\%, a Mean Absolute Error (MAE) of 7.49 MW, a Root Mean Squared Error (RMSE) of 28.95 MW, and an R² value of 0.6095, indicating its superior capability in accurately predicting load shedding occurrences and their magnitudes.\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Model_Performance.png}
+    \caption{Comparison of Model Performance Metrics}
+    \label{fig:model_performance}
+\end{figure} In contrast, the Pure GRU model exhibited a significantly lower success rate of 11.49\%, with an MAE of 45.81 MW, RMSE of 51.63 MW, and a negative R² value of -0.2420, reflecting its inability to capture the temporal dependencies in the data. The Pure LSTM model, while showing better performance than the Pure GRU model, still fell short of the Hybrid LSTM-GRU model, with a success rate of 87.00\%, an MAE of 11.92 MW, RMSE of 36.81 MW, and an R² of 0.3686. These findings highlight the effectiveness of the Hybrid LSTM-GRU model in handling both short-term and long-term dependencies, making it a highly accurate and reliable solution for forecasting load shedding events in electricity grid management. Conversely, the Pure GRU model showed the least effectiveness, with substantial prediction errors and poor model performance, while the Pure LSTM model demonstrated a moderate improvement but did not reach the level of the Hybrid LSTM-GRU model.
+
+\section{Comparison with Baseline / Existing Approaches}
+The Hybrid LSTM-GRU model was compared against baseline models, including Pure GRU and Pure LSTM models. The comparison focused on key performance metrics such as MAE, RMSE, F1 Score, Accuracy Score, and Success Rate. The Hybrid LSTM-GRU model consistently outperformed the baseline models, demonstrating its superior ability to capture both short-term and long-term dependencies in the data. The results indicated that the Hybrid LSTM-GRU model achieved a success rate of 91.08\%, significantly higher than the Pure GRU model's 11.49\% and the Pure LSTM model's 87.00\%. Additionally, the Hybrid model exhibited lower MAE and RMSE values, indicating more accurate predictions. This comparison underscores the effectiveness of the Hybrid LSTM-GRU approach in load shedding forecasting, making it a more reliable choice for practical applications in power grid management.
+
+\section{Discussion on Findings}
+The findings from the performance evaluation of the Hybrid LSTM-GRU model indicate its strong capability in accurately forecasting load shedding events. The model's high success rate and low error metrics suggest that it effectively captures the complex temporal patterns in electricity load data. The superior performance of the Hybrid LSTM-GRU model compared to the Pure GRU and Pure LSTM models highlights the benefits of combining both architectures,which allows the model to leverage the strengths of each. The GRU component efficiently handles short-term dependencies, while the LSTM component captures long-term dependencies, resulting in a more robust forecasting model. These results suggest that the Hybrid LSTM-GRU model is well-suited for real-world applications in power grid management, where accurate load shedding predictions are crucial for maintaining grid stability and minimizing disruptions. However, further research is needed to explore the model's performance under different conditions and datasets to ensure its generalizability and robustness.
+
+\section{Limitations}
+Despite the promising results, several limitations were identified in the study. The model's performance is heavily reliant on the quality and quantity of historical data, which may not always be available or accurate. Additionally, the model may struggle to adapt to sudden changes in electricity demand patterns caused by unforeseen events, such as natural disasters or policy changes. The computational complexity of the Hybrid LSTM-GRU model also poses challenges for real-time deployment, particularly in resource-constrained environments. Furthermore, while the model demonstrated strong performance on the test dataset, its generalizability to other regions or different types of power grids remains to be validated. Future work should focus on addressing these limitations by incorporating more diverse datasets, exploring adaptive learning techniques, and optimizing the model for real-time applications.
+
+\section{Summary}
+In summary, the Hybrid LSTM-GRU model has shown significant promise in accurately forecasting load shedding events, outperforming traditional models in key performance metrics. The model's ability to capture both short-term and long-term dependencies makes it a valuable tool for power grid management. However, addressing the identified limitations will be crucial for enhancing its robustness and applicability in real-world scenarios. Future research should aim to refine the model further and explore its deployment in diverse settings to fully realize its potential in improving electricity load management.   

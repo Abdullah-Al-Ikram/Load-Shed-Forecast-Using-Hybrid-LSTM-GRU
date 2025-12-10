@@ -1,0 +1,215 @@
+\vspace{-0.8cm}
+This chapter provides a comprehensive overview of the system analysis and design process for the load shedding forecasting system. It outlines the functional and non-functional requirements derived from system needs and user expectations, followed by a detailed description of the system architecture and design considerations. The purpose of this chapter is to define the system’s components and structure, ensuring they align with the project objectives and deliver the required functionalities.
+\section{Requirement Analysis}
+This section should present a comprehensive analysis of the \textbf{functional} and \textbf{non-functional} requirements derived from user and system needs. The requirements are derived from the real-world dataset provided by the Power Grid Company of Bangladesh (PGCB) and aim to develop a forecasting system that uses a hybrid LSTM-GRU model to predict load shedding events. The model’s focus is on forecasting both the occurrence and magnitude of load shedding, an area that has received less attention in existing research, which predominantly centers on demand response rather than load shedding.
+\subsection*{Guidelines for Requirement Identification}
+As no direct stakeholder interactions were conducted, the requirements were derived from the following sources:
+\begin{itemize}
+    \item System Needs and Objectives:  The core goal of this system is to predict load shedding events based on historical data of energy generation, demand, and weather conditions. While much of the existing research has focused on demand response, which involves energy consumption adjustments, load shedding prediction remains an underexplored area, particularly in the context of Dhaka city. Therefore, this research aims to bridge that gap by forecasting load shedding events using advanced LSTM and GRU models.
+    \item Review of Existing Solutions: Existing literature on load forecasting generally addresses demand-side management and demand response, with an emphasis on reducing or shifting demand based on grid conditions. However, load shedding prediction, especially in developing cities like Dhaka, has received limited attention. This research intends to focus on this gap, using machine learning models to predict load shedding events.
+    \item System Design Considerations: The system must handle time-series data from PGCB, preprocess it efficiently, and generate real-time predictions of load shedding events. It should manage large datasets and provide actionable predictions that aid in grid management and decision-making.
+\end{itemize}
+
+\subsection*{Functional and Non-Functional Requirements}
+Based on the above guidelines, the following functional and non-functional requirements have been identified for the load shedding forecasting system:
+\subsubsection*{Functional Requirements} These requirements define the specific functionalities that the system must provide to meet user and system needs:
+\begin{table}[H]
+\tiny
+\centering
+\label{tab:system_functional_requirements}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{0.07\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}|}
+\hline
+\rowcolor{gray!30}
+\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\
+\hline
+FR1 &	Data Preprocessing &	The system must clean and preprocess the PGCB dataset, handle missing values, normalize data, and create derived features such as lag features and rolling averages to capture temporal patterns.\\
+\hline
+FR2 &	Model Training &	The system must train a hybrid LSTM+GRU model using the preprocessed PGCB data, optimizing the model’s hyperparameters for better performance in predicting load shedding. \\
+\hline
+FR3 &	Load Shedding Classification &	The system must classify whether load shedding will occur based on the input data (binary classification).\\
+\hline
+FR4 &	Load Shedding Magnitude Prediction &	The system must predict the magnitude of load shedding events using a regression model (continuous value).\\
+\hline
+FR5 &	Model Evaluation &	The system must evaluate the trained models using performance metrics such as accuracy, MAE, RMSE, and R², and provide evaluation results for monitoring.\\
+\hline
+FR6 &	Visualization of Predictions &	The system must display visualizations comparing actual and predicted load shedding events using graphs such as line charts and zoomed-in plots.\\
+\hline
+FR7	&   Real-time Prediction & The system must allow for real-time predictions, enabling forecasting of future load shedding events as new data is input into the system.\\
+\hline
+\end{tabular}
+\caption{Functional Requirements for Load Shedding Forecasting System}
+\end{table}
+
+
+\subsubsection*{Non-Functional Requirements} These non-functional requirements define the quality attributes of the system, focusing on performance, reliability, and other key factors:
+\begin{table}[H]
+\tiny
+\centering
+\label{tab:system_non_functional_requirements}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|p{0.07\textwidth}|p{0.2\textwidth}|p{0.6\textwidth}|}
+\hline
+\rowcolor{gray!30}
+\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\
+\hline
+NFR1 &	Performance and Efficiency & The system must efficiently process large-scale datasets provided by PGCB and generate predictions in real-time, ideally under 10 seconds per prediction.\\
+\hline
+NFR2 &	Scalability &	The system must be scalable to accommodate future increases in data volume, such as adding additional weather-related features or expanding the time period of historical data.\\
+\hline
+NFR3 &	Reliability and Accuracy &	The system must provide accurate and reliable predictions with a high success rate (e.g., 90 or higher) for both classification and regression tasks related to load shedding prediction.\\
+\hline
+NFR4 &	Usability &	The system must be user-friendly, providing easy-to-interpret visualizations and enabling administrators to monitor model performance and make necessary adjustments.\\
+\hline
+NFR5 &	Security &	The system must ensure the security of the data, particularly grid operation information that could be sensitive.\\
+\hline
+NFR6 &	Maintainability and Extensibility &	The system must be easy to maintain and extend for future improvements, such as incorporating additional sources of data or enhancing the model with advanced techniques.\\
+\hline
+NFR7 &	Compatibility &	The system should be compatible with standard data formats from PGCB (e.g., CSV, SQL) and integrate seamlessly with existing energy grid management systems.\\
+\hline
+\end{tabular}
+\caption{Non-Functional Requirements for Load Shedding Forecasting System}
+\end{table}
+\subsection*{Requirement Refinement and Validation}
+Since no formal stakeholder validation was conducted, the following steps were taken to ensure the requirements were well-defined and traceable to project objectives:
+\begin{itemize}
+    \item Refinement: Functional requirements were continuously refined based on the dataset’s available features and the project’s goals. Non-functional requirements were defined based on performance expectations, particularly in terms of real-time processing and prediction accuracy.
+    \item Validation: Requirements were validated by referencing existing research on time-series forecasting and demand response, aligning them with load shedding prediction needs in Dhaka city. Moreover, the system’s design aligns with the broader objective of improving power grid management by predicting load shedding events
+\end{itemize}
+
+\subsection*{Evidence and Documentation}
+Since no direct stakeholder feedback was collected, the primary sources for requirement identification are:
+\begin{itemize}
+    \item PGCB Dataset: The publicly available dataset provided by the Power Grid Company of Bangladesh, which includes historical time-series data on energy generation, demand, and weather conditions..
+    \item Literature Review: Studies on time-series forecasting, LSTM and GRU models in energy systems, and demand response were reviewed to ensure the system aligns with state-of-the-art forecasting practices, while differentiating it from existing demand-side management solutions.
+    \item System Needs: The requirements reflect the project’s aim to forecast load shedding and optimize energy grid distribution in Dhaka, an area that has not been fully explored in prior research.
+\end{itemize}
+
+
+
+\section{System Overview / Architecture}
+This section provides a high-level overview of the system architecture, describing how the various components work together to achieve the project objectives. It outlines the system’s functional modules, data flow, and the interactions between components. The goal is to provide a clear understanding of the system structure and how it supports the forecasting and prediction tasks.
+
+\subsection{High-Level Architecture}
+The system architecture consists of multiple modules that interact seamlessly to process the input data, perform feature engineering, and train a hybrid machine learning model for forecasting load shedding events. Each component of the architecture performs a distinct task, and the system is designed to be modular, facilitating scalability and ease of maintenance.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/LSTM_GRU_Architecture.png}
+    \caption{High-Level System Architecture}
+    \label{fig:system_architecture}
+\end{figure}
+This diagram provides a top-down understanding of the system’s design, emphasizing how data flows between components:
+
+\textbf{Data Preprocessing Module:} The first module is responsible for loading and preprocessing the input data. The dataset contains time-series data for electricity demand, generation, weather data (e.g., temperature, humidity, wind speed), and the target variable: load shedding. The preprocessing steps include:
+\begin{itemize}
+    \item Data Cleaning: Handling missing values through forward and backward filling techniques.
+    \item Feature Engineering: Creating derived features such as the difference between demand and generation, and lag features (e.g., \texttt{loadshed\_lag1}, \texttt{loadshed\_lag3}) to capture temporal dependencies.
+    \item Rolling Features: Calculating rolling averages over 3-hour and 6-hour windows for demand, generation, and difference data to smooth trends.
+    \item Normalization: Scaling all features using MinMaxScaler to normalize them to a range between 0 and 1, ensuring equal contribution to model training.
+\end{itemize}
+\textbf{Data Preprocessing Module:} This module prepares the data for time-series forecasting by reshaping it into sequences of 24-time steps (i.e., 24 hours of past data for each prediction). The sequence creation is done using a sliding window approach to create the following sequences:
+\begin{itemize}
+    \item Sliding Window: Generates sequences of input features (X), the binary classification target (Class), and the regression target (e.g., \texttt{loadshed\_lag1}, \texttt{loadshed\_lag3}).
+    \item Train-Test Split: Data is split into training and testing datasets in an 80/20 ratio, ensuring that the test set includes a proportion of non-zero load shedding events
+\end{itemize}
+
+\textbf{Data Preprocessing Module:} The hybrid GRU-LSTM architecture is used to model both classification and regression tasks:
+\begin{itemize}
+    \item Classification Model (Hybrid LSTM + GRU): The model uses GRU layers to capture short-term dependencies and LSTM layers for long-term dependencies. It outputs a binary prediction indicating whether load shedding will occur.
+    \item Regression Model (Hybrid LSTM + GRU for Non-Zero Loadshed): This model is trained on data where load shedding has occurred (non-zero events). It predicts the magnitude of load shedding in MW, which is then rescaled using an exponential transformation.
+\end{itemize}
+
+\textbf{Output and Evaluation Module:} Once the models are trained, the system generates predictions and evaluates the results:
+\begin{itemize}
+    \item Classification Accuracy: Evaluating the proportion of correct predictions for load shedding events.
+    \item Regression Metrics: Using MAE, RMSE, and R² to assess the accuracy of predicted load shedding values.
+    \item Success Rate: Assessing the model’s ability to predict load shedding within an acceptable error margin (±10\% or ±30 MW).
+\end{itemize}
+
+\subsection{Detailed Design Diagrams}
+To better illustrate and clarify the architecture of the system, this section provides detailed design diagrams that depict how data flows through the system, as well as the architecture of the hybrid GRU-LSTM model. These diagrams serve to enhance understanding of the interactions between different modules and the structure of the model. Each diagram has been included to aid in visualizing the system’s design and provide a granular view of how data is processed, from input to output.
+\begin{itemize}
+
+\item Data Flow Diagram (DFD): Represent the flow of data across different system processes.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Flow Chart.png}
+    \caption{LSTM-GRU System Data Flow Diagram}
+    \label{fig:system_dfd}
+\end{figure}
+\begin{itemize}
+    \item Input Data: The system starts with raw time-series data, including electricity demand, generation, weather data, and historical load shedding events. These data are collected from the Power Grid Company of Bangladesh (PGCB).
+    \item Data Preprocessing: The first major module handles data preprocessing, including cleaning missing values, normalizing data, and creating derived features. For example, the system might calculate lag features such as previous demand, generation, and weather conditions to help the model understand temporal dependencies.
+    \item Feature Engineering: After preprocessing, features such as rolling averages, differences between demand and generation, and temperature adjustments are calculated. These features are vital for capturing trends and dependencies in the time-series data.
+    \item Sequence Creation: The system uses a sliding window technique to create sequences from the preprocessed data. These sequences consist of 24-time steps, which help the system predict future load shedding events based on the previous 24 hours.
+    \item Modeling and Prediction: The next step involves inputting the processed data into the hybrid LSTM + GRU model. The GRU layer captures short-term dependencies, while the LSTM layer handles long-term dependencies. The model outputs two types of predictions: one for classification (whether load shedding will occur) and one for regression (the magnitude of load shedding).
+    \item Output: The final output consists of both binary classification (indicating if load shedding will occur) and regression values (predicting the amount of load shedding in MW). The system can then display these predictions through real-time visualizations.
+\end{itemize}
+\end{itemize}
+
+\subsection{Design Alternatives and Rationale}
+During the design process, several alternative architectures were considered for the load shedding forecasting problem. Each alternative was evaluated based on several criteria, including performance, computational cost, scalability, and ease of implementation.
+
+\begin{itemize}
+\item Balanced Performance: The hybrid model effectively captures both short-term and long-term dependencies in the data, making it well-suited for predicting load shedding events.
+
+\item Computational Efficiency: While LSTM is computationally intensive, the inclusion of GRU reduces training time without sacrificing performance, providing an optimal balance between speed and accuracy.
+
+\item Scalability and Modularity: The model’s architecture is scalable and can be easily adjusted or extended for future improvements, such as incorporating additional features or increasing the number of layers.
+
+\item Proven Effectiveness: Preliminary results from the hybrid LSTM + GRU   model showed high accuracy and robust performance, with a 90.9\% success rate in predicting load shedding events.
+
+\end{itemize}
+
+After thorough analysis, the final architecture provides an optimal balance between accuracy, computational cost, and scalability, making it the best choice for the load shedding prediction task.
+
+
+\section{Algorithmic Flow}
+This section outlines the step-by-step algorithmic flow of the load shedding forecasting system, detailing how data is processed from input to output. The flowchart below illustrates the sequence of operations, including data preprocessing, feature engineering, model training, and prediction generation.
+
+\begin{algorithm}[H]
+\caption{Enhanced Hybrid LSTM-GRU Classification and Regression Pipeline}
+\label{alg:enhanced_hybrid_lstm_gru1}
+\footnotesize
+\begin{algorithmic}[1]
+
+\State \textbf{Input:} Dataset $D(x_1, \dots, x_N)$; define $X$, $y_{class}$, $y_{reg}$, $K$ segments, $S = \mathrm{int}(N/K)$
+
+\For{$i = 0$ to $K-1$}
+    \State $D_k \gets (x_i, \dots, x_{i+S})$
+    \State Compute rolling means; create $X_{seq}$
+
+    \State \textbf{Classification:} LSTM(128)$\rightarrow$Dropout(0.4)$\rightarrow$GRU(128)$\rightarrow$Dense(32)$\rightarrow$Sigmoid
+    \State Compile/train: Binary cross-entropy, 100 epochs
+
+    \If{non-zero $y_{class}$ samples exist}
+        \State \textbf{Regression:} LSTM(128)$\rightarrow$Dropout(0.4)$\rightarrow$GRU(128)$\rightarrow$BatchNorm$\rightarrow$Dense(32)$\rightarrow$Linear
+        \State Compile/train: Huber loss, 120 epochs
+    \Else
+        \State Skip regression
+    \EndIf
+\EndFor
+
+\State \textbf{Prediction:} $y_{class\_pred} \gets \mathrm{ClassificationModel}(X)$; $y_{class\_bin} \gets (y_{class\_pred}\ge0.5)$
+\State $y_{reg\_rescaled} \gets$ RegressionModel$(X)$ if trained, else $0$
+\State $y_{final} \gets y_{class\_bin} \cdot y_{reg\_rescaled}$
+\State Compute inverse transform: $y_{test\_rescaled}$
+\State success\_rate $\gets 100 \cdot \mathrm{mean}(|y_{final}-y_{test\_rescaled}|\le\max(0.1\cdot y_{test\_rescaled},30))$
+\State Print ``Enhanced Hybrid GRU-LSTM Success Rate = success\_rate\%''
+\end{algorithmic}
+\end{algorithm}
+
+The algorithm presented in Algorithm \ref{alg:enhanced_hybrid_lstm_gru1} outlines the step-by-step process for implementing the enhanced hybrid GRU-LSTM model for load shedding forecasting. The algorithm is divided into several key phases: data segmentation, model training for classification and regression, and the prediction phase. Below is a detailed explanation of each step:
+
+\begin{itemize}
+    \item \textbf{Input Data:} The algorithm begins by taking the dataset $D$ containing $N$ samples. The input features $X$, classification target $y_{class}$, and regression target $y_{reg}$ are defined. The dataset is divided into $K$ segments, with each segment containing $S = \mathrm{int}(N/K)$ samples.
+    \item \textbf{Data Segmentation:} A loop iterates over each segment of the dataset. For each segment $D_k$, rolling means are computed to create the sequence input $X_{seq}$, which captures temporal dependencies in the data.
+    \item \textbf{Classification Model Training:} The classification model is defined using a hybrid architecture consisting of LSTM and GRU layers, followed by dense and sigmoid layers for binary classification. The model is compiled using binary cross-entropy loss and trained for 100 epochs.
+    \item \textbf{Regression Model Training:} If there are non-zero samples in the classification target, the regression model is defined similarly, with an additional batch normalization layer. The regression model is compiled using Huber loss and trained for 120 epochs. If no non-zero samples exist, the regression step is skipped.
+    \item \textbf{Prediction Phase:} After training, the classification model generates predictions $y_{class\_pred}$, which are then binarized to obtain $y_{class\_bin}$. The regression model predicts the load shedding magnitude, which is rescaled if trained; otherwise, it defaults to zero.
+    \item \textbf{Final Output Calculation:} The final prediction $y_{final}$ is computed by multiplying the binary classification output with the rescaled regression output. The inverse transformation is applied to obtain the final test predictions $y_{test\_rescaled}$.
+    \item \textbf{Success Rate Calculation:} The success rate is calculated based on the proportion of predictions that fall within an acceptable error margin (±10\% or ±30 MW) of the actual values. The success rate is printed as the
+\end{itemize}
+
+\section{Summary}
+This chapter provided a comprehensive overview of the system analysis and design for the load shedding forecasting system. It detailed the functional and non-functional requirements derived from user and system needs, emphasizing the unique focus on load shedding prediction in Dhaka city. The high-level architecture outlined the modular components of the system, including data preprocessing, feature engineering, model training, and output generation. Detailed design diagrams illustrated the data flow and model architecture, enhancing understanding of the system’s structure. Finally, the chapter discussed design alternatives and the rationale behind selecting the hybrid LSTM-GRU model, highlighting its balance between performance, efficiency, and scalability. Overall, this chapter laid a solid foundation for the subsequent implementation and evaluation of the forecasting system.

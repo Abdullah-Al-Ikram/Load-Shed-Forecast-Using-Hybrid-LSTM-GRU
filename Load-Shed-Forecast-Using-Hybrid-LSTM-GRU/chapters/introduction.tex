@@ -1,0 +1,59 @@
+
+This chapter presents the background, motivation, and literature review for the project, focusing on short-term electricity demand forecasting and load shedding prediction. It provides a foundation for understanding the key concepts, methodologies, and previous studies in this area. The review identifies the strengths and weaknesses of existing systems, which motivates the development of a more robust solution.
+\section{Background and Motivation}
+Electricity load forecasting is a critical task for maintaining the stability of power grids, especially in rapidly developing regions like Dhaka City, where demand often outpaces supply. Load shedding, a strategy used to manage power shortages, causes significant disruption to both households and industries. Traditional forecasting methods often fall short in predicting both the occurrence and magnitude of load shedding due to the complexity and non-linearity of the factors involved, such as weather patterns and seasonal demand fluctuations. This challenge has led to increased interest in using advanced machine learning and deep learning techniques to improve prediction accuracy. Recent studies have explored the use of hybrid deep learning models, such as Convolutional Neural Networks (CNN) combined with Long Short-Term Memory (LSTM) or Gated Recurrent Unit (GRU) networks, to capture both short-term and long-term dependencies in time-series data, which are critical for accurate load shedding prediction [1][2].
+
+\section{Problem Statement}
+Despite advancements in load forecasting, there remains a gap in the development of a unified model capable of accurately predicting both the occurrence (classification) and the magnitude (regression) of load shedding events. Existing models either focus on one aspect either forecasting the event or predicting the magnitude but fail to provide a comprehensive solution that addresses both challenges simultaneously. Moreover, many existing approaches struggle to handle the complex, non-linear relationships and temporal dependencies inherent in power grid data, limiting their effectiveness in real-world applications, particularly in developing countries like Bangladesh. This research seeks to fill this gap by developing a hybrid deep learning model that combines GRU and LSTM architectures for improved accuracy and computational efficiency in forecasting both the occurrence and magnitude of load shedding events.
+\section{Objectives of the Project}
+The main objectives of this project are as follows:
+\begin{itemize}
+    \item To develop a hybrid GRU-LSTM deep learning model for short-term load shedding forecasting.
+    \item To predict the binary occurrence of load shedding events (classification) and the required magnitude (regression) using historical data from the Power Grid Company of Bangladesh (PGCB).
+    \item To evaluate the performance of the proposed model by comparing it with traditional forecasting models, such as Naïve forecasting, based on key metrics such as accuracy, F1 Score, Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE).
+    \item To provide actionable insights that can aid in improving power grid management and reducing the socio-economic impact of load shedding in Dhaka City.
+\end{itemize}
+
+	
+\section{Research Questions / Hypotheses}
+This project is guided by the following research question and hypotheses:
+\begin{itemize}
+    \item Can a hybrid GRU-LSTM deep learning model outperform standalone forecasting models in predicting both the occurrence and magnitude of electricity load shedding events?
+    \begin{itemize}
+        \item The proposed hybrid model, by leveraging the short-term learning efficiency of GRU and the long-term memory of LSTM, will demonstrate lower error metrics (MAE and RMSE) and a higher classification success rate compared to traditional models, such as Naïve forecasting.
+    \end{itemize}
+\end{itemize}
+	
+\section{Scope of the Work}
+The scope of this work is limited to the development and validation of the hybrid LSTM- GRU model using historical operational data provided by the PGCB, covering the period from July 2024 to July 2025. The dataset includes features such as electricity demand, generation, weather conditions, and past load shedding events. The focus is on predictive modeling, and the study does not extend to the integration of the model into real-time power grid systems or the design of the physical infrastructure for power distribution. Additionally, the performance evaluation is constrained by the quality and temporal resolution of the available dataset.
+	
+\section{Expected Outcomes}
+The expected outcomes of this project include:
+\begin{itemize}
+    \item A robust hybrid LSTM-GRU model capable of accurately forecasting load shedding events, demonstrated by a high classification success rate (targeting 90\% or above) and low regression error metrics (targeting MAE $<$ 10 MW and RMSE $<$ 35 MW). 
+    \item A detailed comparison of the hybrid model’s performance against baseline forecasting models, proving its superiority in handling both classification and regression tasks. 
+    \item A modular and reproducible Python codebase that can be adapted for other forecasting applications in energy management.
+    \item Insights into the effectiveness of advanced deep learning techniques for improving power grid management in Bangladesh.
+\end{itemize}
+
+\section{Impacts of the Project}
+The impact of this project is multifaceted, touching on societal, health, safety, legal, and environmental issues. The ability to forecast load shedding events accurately will enhance power grid management, reduce unnecessary disruptions, and improve overall public satisfaction. This will contribute to the socioeconomic stability of the region and support the efficient use of available energy resources.
+\subsection{Impact on Societal and Cultural Issues }
+    Accurate load shedding forecasts will provide grid operators with enough lead time to inform the public about planned outages, reducing frustration and helping businesses and households plan accordingly. This will improve the public’s trust in the electricity supply system and reduce social disruption.
+\subsection{Impact on Health, Safety, and Legal Issues }
+    Reliable forecasting of load shedding will enhance public safety by preventing unexpected outages that could damage sensitive equipment or disrupt critical services, such as hospitals and emergency responders. It will also help utility companies meet regulatory requirements by providing transparent, accurate outage information, thus reducing consumer disputes and legal challenges
+\subsection{Impact on Environment and Sustainibility Issues }
+	By improving the accuracy of load shedding predictions, the model will help optimize power generation and reduce reliance on less efficient, high-emission backup power plants, particularly during peak demand periods. This can contribute to a more sustainable and environmentally friendly energy system, aligning with global efforts to reduce carbon emissions and improve energy efficiency.
+\section{Report Organization}
+The remainder of this report is structured as follows:
+\begin{itemize}
+   
+    \item Chapter 2: Background and Literature Review — reviews key concepts, previous systems, and research gaps.
+    \item Chapter 3: System Analysis and Design — presents requirements, architectural design, and diagrams.
+    \item Chapter 4: Methodology and Implementation — describes technologies, modules, and calibration workflows.
+    \item Chapter 5: Results and Evaluation — covers experiments, system testing, and analysis of results.
+    \item Chapter 6: Time and Cost Analysis — outlines project timeline, budget, and resource distribution.
+    \item Chapter 7: Design Constraints and Standards — documents compliance with professional and safety guidelines.
+    \item Chapter 8: Conclusion and Future Work — summarizes findings and suggests future improvements.
+
+\end{itemize}
